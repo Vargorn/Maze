@@ -132,27 +132,75 @@ public:
 			}
 			if (this->currentRoom->getX() == this->length - 1) {
 				//right
-				options.erase(options.end() - 2);
+				if (options.size() == 4) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 			else if (maze[this->currentRoom->getY()][this->currentRoom->getX() + 1]->getIsVisited()) {
 				//right
-				options.erase(options.end() - 2);
+				if (options.size() == 4) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 			if (this->currentRoom->getY() == 0) {
 				//up
-				options.erase(options.end() - 1);
+				if (options.size() == 4) {
+					options.erase(options.begin() + 2);
+				}
+				else if (options.size() == 3) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 			else if (maze[this->currentRoom->getY() - 1][this->currentRoom->getX()]->getIsVisited()) {
 				//up
-				options.erase(options.end() - 1);
+				if (options.size() == 4) {
+					options.erase(options.begin() + 2);
+				}
+				else if (options.size() == 3) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 			if (this->currentRoom->getY() == this->length - 1) {
 				//down
-				options.erase(options.end());
+				if (options.size() == 4) {
+					options.erase(options.begin() + 3);
+				}
+				else if (options.size() == 3) {
+					options.erase(options.begin() + 2);
+				}
+				else if (options.size() == 2) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 			else if (maze[this->currentRoom->getY() + 1][this->currentRoom->getX()]->getIsVisited()) {
 				//down
-				options.erase(options.end());
+				if (options.size() == 4) {
+					options.erase(options.begin() + 3);
+				}
+				else if (options.size() == 3) {
+					options.erase(options.begin() + 2);
+				}
+				else if (options.size() == 2) {
+					options.erase(options.begin() + 1);
+				}
+				else {
+					options.erase(options.begin());
+				}
 			}
 
 			if (options.size() == 0) {
